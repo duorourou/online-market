@@ -32,7 +32,7 @@ class OrderTest extends Specification {
           Order order = new Order()
 
         and: "the items size in this order has already reached the limitation "
-          List<OrderItem> items = IntStream.range(1, SIZE_LIMITATION).mapToObj { i -> new OrderItem() }.collect()
+          List<OrderItem> items = IntStream.range(0, SIZE_LIMITATION).mapToObj { i -> new OrderItem() }.collect()
           order.addItems(items)
 
         and: "we have a new order item"
