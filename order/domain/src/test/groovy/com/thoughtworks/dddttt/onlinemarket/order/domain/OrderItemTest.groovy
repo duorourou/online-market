@@ -7,7 +7,7 @@ class OrderItemTest extends Specification {
 
     def "we have a limited order item price when create order item"() {
         given: "we have a product which price is greater than the order item subtotal price limitation"
-          def superExpensiveProduct = new Product("A product", SubtotalLimitation.LIMITATION.add(new BigDecimal(10.00)))
+          def superExpensiveProduct = new Product("A product", SubtotalLimitation.MAX.add(new BigDecimal(10.00)))
 
         when: "we create an order item use this expensive product"
           new OrderItem(superExpensiveProduct, 1)
@@ -19,7 +19,7 @@ class OrderItemTest extends Specification {
 
     def "we have a limited order item price when update order item"() {
         given: "we have a product which price is greater than the order item subtotal price limitation"
-          def superExpensiveProduct = new Product("A product", SubtotalLimitation.LIMITATION)
+          def superExpensiveProduct = new Product("A product", SubtotalLimitation.MAX)
 
         and: "we create an order item use this expensive product"
           OrderItem orderItem = new OrderItem(superExpensiveProduct, 1)
