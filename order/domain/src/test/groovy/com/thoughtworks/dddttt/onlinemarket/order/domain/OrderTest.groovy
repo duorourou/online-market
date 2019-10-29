@@ -6,6 +6,8 @@ import spock.lang.Specification
 
 import java.util.stream.IntStream
 
+import static com.thoughtworks.dddttt.onlinemarket.order.domain.OrderItemSizeLimitation.SIZE_LIMITATION
+
 class OrderTest extends Specification {
 
     def "order can add order items"() {
@@ -25,20 +27,21 @@ class OrderTest extends Specification {
           order.getItems().containsAll(items)
     }
 
-    def "order only could have less than 100 items"() {
+    def 'we have a limited order items in an order'() {
         given: "we have an order"
           Order order = new Order()
 
-        and: "the order has already include 99 items"
-          List<OrderItem> items = IntStream.range(0, 99).mapToObj { i -> new OrderItem() } collect()
+        and: "the items size in this order has already reached the limitation "
+          List<OrderItem> items = IntStream.range(1, SIZE_LIMITATION).mapToObj { i -> new OrderItem() }.collect()
           order.addItems(items)
 
         and: "we have a new order item"
           OrderItem item = new OrderItem()
-        when:
+        when: "we try to add the new item to this order"
           order.addItems([item])
 
         then: "there will be an OrderItemCapacityLimitation error"
           OrderItemCapacityLimitationException exception = thrown()
+          exception != null
     }
 }
