@@ -28,4 +28,15 @@ class SubtotalPriceTest extends Specification {
           SubtotalExceededLimitationException exception = thrown()
           exception != null
     }
+
+    def "the subtotal price will be discounted"() {
+        given: "the subtotal of an item"
+          SubtotalPrice subtotalPrice = new SubtotalPrice(new BigDecimal(500), null)
+
+        when: "we get the discount price"
+          BigDecimal discountedPrice = subtotalPrice.discount()
+
+        then: "the discount price will be calculated"
+          discountedPrice == new BigDecimal(450.00)
+    }
 }

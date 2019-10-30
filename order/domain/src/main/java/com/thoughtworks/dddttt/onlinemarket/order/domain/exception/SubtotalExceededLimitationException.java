@@ -10,6 +10,6 @@ public class SubtotalExceededLimitationException extends RuntimeException {
                     + " and less than " + SubtotalLimitation.MIN.toPlainString() + ", current subtotal is %d.";
 
     public SubtotalExceededLimitationException(BigDecimal currentSubtotal) {
-        super(MessageFormat.format(MESSAGE_TEMPLATE, currentSubtotal));
+        super(String.format(MESSAGE_TEMPLATE, currentSubtotal));
     }
 }

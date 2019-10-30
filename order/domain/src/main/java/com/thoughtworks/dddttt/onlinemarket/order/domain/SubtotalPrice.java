@@ -2,6 +2,7 @@ package com.thoughtworks.dddttt.onlinemarket.order.domain;
 
 import com.thoughtworks.dddttt.onlinemarket.order.domain.exception.SubtotalExceededLimitationException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class SubtotalPrice {
@@ -27,10 +28,14 @@ public class SubtotalPrice {
     }
 
     private boolean exceededMaxPrice(BigDecimal newPrice) {
-        return !hasPriceLimit() || newPrice.compareTo(maxPrice) > 0;
+        return hasPriceLimit() && newPrice.compareTo(maxPrice) > 0;
     }
 
     private boolean hasPriceLimit() {
         return Objects.nonNull(this.maxPrice);
+    }
+
+    public BigDecimal discount() {
+        return price.multiply(new BigDecimal(0.9)).setScale(2, RoundingMode.HALF_UP);
     }
 }
