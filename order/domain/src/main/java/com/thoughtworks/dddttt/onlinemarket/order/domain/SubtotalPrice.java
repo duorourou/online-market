@@ -7,20 +7,16 @@ import java.util.Objects;
 
 public class SubtotalPrice {
 
-    private BigDecimal price;
+    private final BigDecimal originSubtotal;
     private final BigDecimal maxPrice;
     private final BigDecimal minPrice = SubtotalLimitation.MIN;
 
     public SubtotalPrice(BigDecimal newPrice, BigDecimal maxPrice) {
         this.maxPrice = maxPrice;
-        amount(newPrice);
-    }
-
-    public void amount(BigDecimal newPrice) {
         if (exceededMaxPrice(newPrice) || exceededMinPrice(newPrice)) {
             throw new SubtotalExceededLimitationException(newPrice);
         }
-        this.price = newPrice;
+        this.originSubtotal = newPrice;
     }
 
     private boolean exceededMinPrice(BigDecimal newPrice) {
@@ -35,7 +31,15 @@ public class SubtotalPrice {
         return Objects.nonNull(this.maxPrice);
     }
 
-    public BigDecimal discount() {
-        return price.multiply(new BigDecimal(0.9)).setScale(2, RoundingMode.HALF_UP);
+    public BigDecimal finalSubtotal() {
+        return originSubtotal.multiply(new BigDecimal(0.9)).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public BigDecimal originPrice() {
+        return this.originSubtotal;
+    }
+
+    public SubtotalPrice amount(BigDecimal multiply) {
+        return new SubtotalPrice(multiply, this.maxPrice);
     }
 }

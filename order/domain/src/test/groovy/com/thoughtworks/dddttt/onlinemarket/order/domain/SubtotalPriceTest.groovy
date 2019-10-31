@@ -34,7 +34,7 @@ class SubtotalPriceTest extends Specification {
           SubtotalPrice subtotalPrice = new SubtotalPrice(new BigDecimal(500), null)
 
         when: "we get the discount price"
-          BigDecimal discountedPrice = subtotalPrice.discount()
+          BigDecimal discountedPrice = subtotalPrice.finalSubtotal()
 
         then: "the discount price will be calculated"
           discountedPrice == new BigDecimal(450.00)
