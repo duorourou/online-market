@@ -8,7 +8,7 @@ class OrderPriceTest extends Specification {
 
     def "should have a discount total price"() {
         given:
-          OrderPrice orderPrice = new OrderPrice([new SubtotalPrice(new BigDecimal(81.00), null)])
+          OrderPrice orderPrice = new OrderPrice([new SubtotalPrice(new BigDecimal(81.00), 1, null)])
 
         when:
           BigDecimal finalTotal = orderPrice.finalTotal()

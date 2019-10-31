@@ -11,12 +11,14 @@ public class SubtotalPrice {
     private final BigDecimal maxPrice;
     private final BigDecimal minPrice = SubtotalLimitation.MIN;
 
-    public SubtotalPrice(BigDecimal newPrice, BigDecimal maxPrice) {
+    public SubtotalPrice(BigDecimal unitPrice, int quantity, BigDecimal maxPrice) {
         this.maxPrice = maxPrice;
-        if (exceededMaxPrice(newPrice) || exceededMinPrice(newPrice)) {
-            throw new SubtotalExceededLimitationException(newPrice);
+
+        BigDecimal subtotal = unitPrice.multiply(new BigDecimal(quantity));
+        if (exceededMaxPrice(subtotal) || exceededMinPrice(subtotal)) {
+            throw new SubtotalExceededLimitationException(subtotal);
         }
-        this.originSubtotal = newPrice;
+        this.originSubtotal = subtotal;
     }
 
     private boolean exceededMinPrice(BigDecimal newPrice) {
@@ -39,7 +41,7 @@ public class SubtotalPrice {
         return this.originSubtotal;
     }
 
-    public SubtotalPrice amount(BigDecimal multiply) {
-        return new SubtotalPrice(multiply, this.maxPrice);
+    public SubtotalPrice amount(BigDecimal unitPrice, int quantity) {
+        return new SubtotalPrice(unitPrice, quantity, this.maxPrice);
     }
 }

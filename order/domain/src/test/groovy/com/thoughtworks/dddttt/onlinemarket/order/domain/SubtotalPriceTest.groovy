@@ -7,10 +7,10 @@ class SubtotalPriceTest extends Specification {
 
     def "the subtotal price could not greater than max limitation"() {
         given:
-          SubtotalPrice subtotal = new SubtotalPrice(BigDecimal.ZERO, BigDecimal.ONE)
+          SubtotalPrice subtotal = new SubtotalPrice(BigDecimal.ZERO, 1, BigDecimal.ONE)
 
         when:
-          subtotal.amount(BigDecimal.TEN)
+          subtotal.amount(BigDecimal.TEN, 1)
 
         then:
           SubtotalExceededLimitationException exception = thrown()
@@ -19,10 +19,10 @@ class SubtotalPriceTest extends Specification {
 
     def "the subtotal price could not less than min limitation"() {
         given:
-          SubtotalPrice subtotal = new SubtotalPrice(BigDecimal.ONE, BigDecimal.ONE)
+          SubtotalPrice subtotal = new SubtotalPrice(BigDecimal.ONE, 1, BigDecimal.ONE)
 
         when:
-          subtotal.amount(BigDecimal.valueOf(-1.2))
+          subtotal.amount(BigDecimal.valueOf(-1.2), 1)
 
         then:
           SubtotalExceededLimitationException exception = thrown()
@@ -31,7 +31,7 @@ class SubtotalPriceTest extends Specification {
 
     def "the subtotal price will be discounted"() {
         given: "the subtotal of an item"
-          SubtotalPrice subtotalPrice = new SubtotalPrice(new BigDecimal(500), null)
+          SubtotalPrice subtotalPrice = new SubtotalPrice(new BigDecimal(500), 1, null)
 
         when: "we get the discount price"
           BigDecimal discountedPrice = subtotalPrice.finalSubtotal()
