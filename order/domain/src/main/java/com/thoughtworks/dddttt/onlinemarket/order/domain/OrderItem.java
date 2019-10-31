@@ -18,4 +18,8 @@ public class OrderItem {
         this.quantity = newQuantity;
         return this;
     }
+
+    protected SubtotalPrice subtotal() {
+        return this.subtotal;
+    }
 }

@@ -10,9 +10,11 @@ import static com.thoughtworks.dddttt.onlinemarket.order.domain.OrderItemSizeLim
 
 class OrderTest extends Specification {
 
+    def account = new Account("A User");
+
     def "order can add order items"() {
         given: "we have an order"
-          Order order = new Order()
+          Order order = new Order(account)
 
         and: "we have some order items"
           def items = [
@@ -29,7 +31,7 @@ class OrderTest extends Specification {
 
     def 'we have a limited order items in an order'() {
         given: "we have an order"
-          Order order = new Order()
+          Order order = new Order(account)
 
         and: "the items size in this order has already reached the limitation "
           List<OrderItem> items = IntStream.range(0, SIZE_LIMITATION)
