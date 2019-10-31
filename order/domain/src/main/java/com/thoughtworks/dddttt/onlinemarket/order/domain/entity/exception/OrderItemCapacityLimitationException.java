@@ -1,6 +1,6 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain.exception;
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception;
 
-import com.thoughtworks.dddttt.onlinemarket.order.domain.OrderItemSizeLimitation;
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.OrderItemSizeLimitation;
 import java.text.MessageFormat;
 
 public class OrderItemCapacityLimitationException extends Exception {

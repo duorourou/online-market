@@ -1,6 +1,6 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain;
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity;
 
-import com.thoughtworks.dddttt.onlinemarket.order.domain.exception.SubtotalExceededLimitationException;
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.SubtotalExceededLimitationException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;

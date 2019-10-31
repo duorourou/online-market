@@ -1,8 +1,7 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain.exception;
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception;
 
-import com.thoughtworks.dddttt.onlinemarket.order.domain.SubtotalLimitation;
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.SubtotalLimitation;
 import java.math.BigDecimal;
-import java.text.MessageFormat;
 
 public class SubtotalExceededLimitationException extends RuntimeException {
     private static final String MESSAGE_TEMPLATE =

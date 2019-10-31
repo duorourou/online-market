@@ -1,6 +1,6 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain;
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity;
 
-import com.thoughtworks.dddttt.onlinemarket.order.domain.exception.OrderItemCapacityLimitationException;
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.OrderItemCapacityLimitationException;
 import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;

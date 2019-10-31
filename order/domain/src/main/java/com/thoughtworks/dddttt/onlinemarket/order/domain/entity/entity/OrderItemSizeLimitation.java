@@ -1,4 +1,4 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain;
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity;
 
 public final class OrderItemSizeLimitation {
     public static final int SIZE_LIMITATION = 100;

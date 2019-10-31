@@ -1,12 +1,14 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity
 
-
-import com.thoughtworks.dddttt.onlinemarket.order.domain.exception.OrderItemCapacityLimitationException
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.Account
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.Order
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.OrderItem
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.Product
 import spock.lang.Specification
 
 import java.util.stream.IntStream
 
-import static com.thoughtworks.dddttt.onlinemarket.order.domain.OrderItemSizeLimitation.SIZE_LIMITATION
+import static com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.OrderItemSizeLimitation.SIZE_LIMITATION
 
 class OrderTest extends Specification {
 
@@ -45,7 +47,7 @@ class OrderTest extends Specification {
           order.addItems([item])
 
         then: "there will be an OrderItemCapacityLimitation error"
-          OrderItemCapacityLimitationException exception = thrown()
+          com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.OrderItemCapacityLimitationException exception = thrown()
           exception != null
     }
 }

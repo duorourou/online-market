@@ -1,6 +1,8 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity
 
-import com.thoughtworks.dddttt.onlinemarket.order.domain.exception.SubtotalExceededLimitationException
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.OrderItem
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.Product
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.SubtotalLimitation
 import spock.lang.Specification
 
 class OrderItemTest extends Specification {
@@ -13,7 +15,7 @@ class OrderItemTest extends Specification {
           new OrderItem(superExpensiveProduct, 1)
 
         then: "there will be an SubtotalExceededLimitation error"
-          SubtotalExceededLimitationException error = thrown()
+          com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.SubtotalExceededLimitationException error = thrown()
           error != null
     }
 
@@ -30,7 +32,7 @@ class OrderItemTest extends Specification {
           orderItem.increaseProductNumber(1)
 
         then: "there will be an SubtotalExceededLimitation error"
-          SubtotalExceededLimitationException error = thrown()
+          com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.SubtotalExceededLimitationException error = thrown()
           error != null
     }
 

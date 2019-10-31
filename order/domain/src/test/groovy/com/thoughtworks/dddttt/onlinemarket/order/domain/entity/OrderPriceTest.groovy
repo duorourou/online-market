@@ -1,5 +1,8 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity
 
+
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.OrderPrice
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.SubtotalPrice
 import spock.lang.Specification
 
 import java.math.RoundingMode

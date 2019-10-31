@@ -1,4 +1,4 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain;
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity;
 
 public class OrderItem {
     private final Product product;

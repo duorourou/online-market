@@ -1,6 +1,7 @@
-package com.thoughtworks.dddttt.onlinemarket.order.domain
+package com.thoughtworks.dddttt.onlinemarket.order.domain.entity
 
-import com.thoughtworks.dddttt.onlinemarket.order.domain.exception.SubtotalExceededLimitationException
+
+import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.SubtotalPrice
 import spock.lang.Specification
 
 class SubtotalPriceTest extends Specification {
@@ -13,7 +14,7 @@ class SubtotalPriceTest extends Specification {
           subtotal.amount(BigDecimal.TEN, 1)
 
         then:
-          SubtotalExceededLimitationException exception = thrown()
+          com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.SubtotalExceededLimitationException exception = thrown()
           exception != null
     }
 
@@ -25,7 +26,7 @@ class SubtotalPriceTest extends Specification {
           subtotal.amount(BigDecimal.valueOf(-1.2), 1)
 
         then:
-          SubtotalExceededLimitationException exception = thrown()
+          com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.SubtotalExceededLimitationException exception = thrown()
           exception != null
     }
 
