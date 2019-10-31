@@ -12,7 +12,7 @@ public class OrderItem {
                 SubtotalLimitation.MAX);
     }
 
-    public OrderItem increaseProductNumber(int increasedQuantity) {
+    protected OrderItem increaseProductNumber(int increasedQuantity) {
         int newQuantity = this.quantity + increasedQuantity;
         this.subtotal.amount(this.product.price(), newQuantity);
         this.quantity = newQuantity;
