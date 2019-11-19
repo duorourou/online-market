@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 @Getter
 public class Order {
+    private String id;
     private final Account account;
     private final List<OrderItem> items = new ArrayList<>();
     private OrderPrice orderPrice;
@@ -45,5 +46,9 @@ public class Order {
         return this.items;
     }
 
+    public Order setId(String id) {
+        this.id = id;
+        return this;
+    }
 
 }
