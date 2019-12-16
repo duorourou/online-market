@@ -1,6 +1,7 @@
 package com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity;
 
 import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.exception.OrderItemCapacityLimitationException;
+import java.util.Collections;
 import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,8 @@ public class Order {
     private final List<OrderItem> items = new ArrayList<>();
     private OrderPrice orderPrice;
 
-    public Order(Account account) {
-        this.account = account;
-        amount();
-    }
-
     public Order(Account account, List<OrderItem> items) {
+        assert items != null && !items.isEmpty() : "items could not be empty.";
         this.account = account;
         this.items.addAll(items);
         amount();

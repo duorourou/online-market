@@ -17,7 +17,8 @@ class OrderTest extends Specification {
 
     def "order can add order items"() {
         given: "we have an order"
-          Order order = new Order(account)
+          Order order = new Order(account,
+           [new OrderItem(new Product("3","Cellphone", BigDecimal.TEN), 1)])
 
         and: "we have some order items"
           def items = [
@@ -34,10 +35,11 @@ class OrderTest extends Specification {
 
     def 'we have a limited order items in an order'() {
         given: "we have an order"
-          Order order = new Order(account)
+          Order order = new Order(account,
+          [new OrderItem(new Product("2","Cellphone", BigDecimal.TEN), 1)])
 
         and: "the items size in this order has already reached the limitation "
-          List<OrderItem> items = IntStream.range(0, SIZE_LIMITATION)
+          List<OrderItem> items = IntStream.range(0, SIZE_LIMITATION - 1)
                   .mapToObj { i -> new OrderItem(new Product("1","Cellphone", BigDecimal.TEN), 1) }
                   .collect()
           order.addItems(items)

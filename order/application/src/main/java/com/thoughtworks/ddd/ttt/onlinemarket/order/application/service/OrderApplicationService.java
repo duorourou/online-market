@@ -1,6 +1,7 @@
 package com.thoughtworks.ddd.ttt.onlinemarket.order.application.service;
 
 import com.thoughtworks.ddd.ttt.onlinemarket.order.application.command.CreateOrderCommand;
+import com.thoughtworks.ddd.ttt.onlinemarket.order.application.factory.OrderFactory;
 import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.Account;
 import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.Order;
 import com.thoughtworks.dddttt.onlinemarket.order.domain.entity.entity.OrderItem;
@@ -23,9 +24,7 @@ public class OrderApplicationService {
 
     public String createOrder(CreateOrderCommand createCommand, Account account) {
 
-        Order order = new Order(account, createCommand.getItems().stream()
-                .map(item -> new OrderItem(item.getProduct(), item.getQuantity()))
-                .collect(Collectors.toList()));
+        Order order = OrderFactory.buildBy(createCommand, account);
 
         orderRepository.store(order);
         eventPublisher.publishEvent(new OrderCreatedEvent(order));
